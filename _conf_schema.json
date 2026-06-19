@@ -1,0 +1,58 @@
+{
+  "target_group": {
+    "type": "string",
+    "description": "目标群号",
+    "default": "764687233"
+  },
+  "lottery": {
+    "type": "string",
+    "default": "来个老婆,换个老婆"
+  },
+  "data": {
+    "type": "string",
+    "default": "我的老婆"
+  },
+  "wish": {
+    "type": "string",
+    "default": "许愿"
+  },
+  "rank": {
+    "type": "string",
+    "default": "排名"
+  },
+  "lotteryOut": {
+    "type": "text",
+    "default": " 今日老婆：%s | 情愫：%d%% %s\n%s后可更换"
+  },
+  "dataOut": {
+    "type": "text",
+    "default": "\n累计带走%d人 共%d次\n带走次数御三：%s"
+  },
+  "dataVoidOut": {
+    "type": "text",
+    "default": "\n你还没有老婆~ 情愫达到80%才可以带走捏"
+  },
+  "wishSuccess": {
+    "type": "string",
+    "default": "许愿成功：%s"
+  },
+  "wishError": {
+    "type": "string",
+    "default": "许愿格式错误，例：%s 林忆宁"
+  },
+  "notFound": {
+    "type": "string",
+    "default": "许愿对象不存在"
+  },
+  "bring_threshold": {
+    "type": "int",
+    "description": "带走老婆的最低情愫值",
+    "default": 80
+  },
+
+  "db_host": { "type": "string", "default": "localhost" },
+  "db_port": { "type": "int", "default": 3306 },
+  "db_user": { "type": "string", "default": "ylgwlo" },
+  "db_password": { "type": "string", "default": "48Z6arYWSyxRzYPp" },
+  "db_name": { "type": "string", "default": "ylgwlo" }
+}
