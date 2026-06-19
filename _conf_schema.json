@@ -49,7 +49,7 @@
     "description": "带走老婆的最低情愫值",
     "default": 80
   },
-
+    "anti_recall_qq": { "type": "string", "default": "123456", "description": "防撤回监控的QQ号" }, 
   "db_host": { "type": "string", "default": "localhost" },
   "db_port": { "type": "int", "default": 3306 },
   "db_user": { "type": "string", "default": "ylgwlo" },
