@@ -3,7 +3,6 @@ from pathlib import Path
 import requests
 from datetime import datetime
 
-
 class Config:
 
     def __init__(self, cfg):

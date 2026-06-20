@@ -1,58 +1,172 @@
 {
   "target_group": {
     "type": "string",
-    "description": "目标群号",
+    "description": "目标群号（逗号分隔可多个）",
     "default": "764687233"
   },
   "lottery": {
     "type": "string",
+    "description": "抽奖指令",
     "default": "来个老婆,换个老婆"
   },
   "data": {
     "type": "string",
+    "description": "数据查询指令",
     "default": "我的老婆"
   },
   "wish": {
     "type": "string",
+    "description": "许愿指令",
     "default": "许愿"
   },
   "rank": {
     "type": "string",
+    "description": "排名查询指令",
     "default": "排名"
+  },
+  "firstCoinMsg": {
+    "type": "string",
+    "description": "每日第一提示",
+    "default": "本日第一！coins+20"
   },
   "lotteryOut": {
     "type": "text",
+    "description": "抽奖输出格式",
     "default": " 今日老婆：%s | 情愫：%d%% %s\n%s后可更换"
+  },
+  "pocketIdMsg": {
+    "type": "string",
+    "description": "口袋ID提示",
+    "default": "口袋ID: %s"
+  },
+  "useChanceMsg": {
+    "type": "string",
+    "description": "使用特殊次数提示",
+    "default": "使用 1 次，剩余可用抽奖次数 %d 次"
+  },
+  "chanceMsg": {
+    "type": "string",
+    "description": "可用次数提示",
+    "default": "可用抽奖次数 %d 次"
+  },
+  "senseQueenMsg": {
+    "type": "string",
+    "description": "情愫王信息格式",
+    "default": "当前情愫王：%s [%d%%]"
+  },
+  "birthdayMsg": {
+    "type": "string",
+    "description": "生日提示",
+    "default": "生日当天抽中成员，coins+20"
+  },
+  "starDataNotLoadedMsg": {
+    "type": "string",
+    "description": "星数据未加载提示",
+    "default": "星数据未加载"
+  },
+  "lotteryErrorMsg": {
+    "type": "string",
+    "description": "抽奖错误提示",
+    "default": "抽奖出错，请稍后再试"
   },
   "dataOut": {
     "type": "text",
-    "default": "\n累计带走%d人 共%d次\n带走次数御三：%s"
+    "description": "数据查询输出格式",
+    "default": "\n共抽 %d 次，累计带走 %d 人\n最高情愫：%s(%d%%) %d 次\n最多次数：%s(%d%%) %d 次"
   },
   "dataVoidOut": {
     "type": "text",
-    "default": "\n你还没有老婆~ 情愫达到80%才可以带走捏"
+    "description": "无老婆提示",
+    "default": "\n你还没有老婆~ 情愫达到 %d%% 才可以带走捏"
+  },
+  "senseKingMsg": {
+    "type": "text",
+    "description": "情愫王信息",
+    "default": "您是 %d 位小偶像的情愫王：\n%s"
+  },
+  "noSenseKingMsg": {
+    "type": "string",
+    "description": "非情愫王提示",
+    "default": "您不是任何小偶像的情愫王"
   },
   "wishSuccess": {
     "type": "string",
+    "description": "许愿成功提示",
     "default": "许愿成功：%s"
   },
   "wishError": {
     "type": "string",
+    "description": "许愿格式错误提示",
     "default": "许愿格式错误，例：%s 林忆宁"
   },
   "notFound": {
     "type": "string",
+    "description": "许愿对象不存在提示",
     "default": "许愿对象不存在"
+  },
+  "rankEmptyMsg": {
+    "type": "string",
+    "description": "无排名提示",
+    "default": "本群还没有成功带走老婆的用户"
+  },
+  "rankMsg": {
+    "type": "string",
+    "description": "排名标题",
+    "default": "本群带走老婆次数排名"
+  },
+  "rankingMsg": {
+    "type": "string",
+    "description": "用户排名信息",
+    "default": "您的排名：%d，距离上一名差(%d)"
+  },
+  "noRankMsg": {
+    "type": "string",
+    "description": "用户无排名提示",
+    "default": "您还没有带走过老婆"
+  },
+  "recallMsg": {
+    "type": "string",
+    "description": "防撤回消息格式",
+    "default": "%s撤回消息："
+  },
+  "errorMsg": {
+    "type": "string",
+    "description": "通用错误提示",
+    "default": "系统错误，请稍后再试"
   },
   "bring_threshold": {
     "type": "int",
     "description": "带走老婆的最低情愫值",
     "default": 80
   },
-    "anti_recall_qq": { "type": "string", "default": "123456", "description": "防撤回监控的QQ号" }, 
-  "db_host": { "type": "string", "default": "localhost" },
-  "db_port": { "type": "int", "default": 3306 },
-  "db_user": { "type": "string", "default": "ylgwlo" },
-  "db_password": { "type": "string", "default": "48Z6arYWSyxRzYPp" },
-  "db_name": { "type": "string", "default": "ylgwlo" }
+  "anti_recall_qq": {
+    "type": "string",
+    "description": "防撤回监控的QQ号（逗号分隔）",
+    "default": ""
+  },
+  "db_host": {
+    "type": "string",
+    "description": "数据库地址",
+    "default": "localhost"
+  },
+  "db_port": {
+    "type": "int",
+    "description": "数据库端口",
+    "default": 3306
+  },
+  "db_user": {
+    "type": "string",
+    "description": "数据库用户",
+    "default": "root"
+  },
+  "db_password": {
+    "type": "string",
+    "description": "数据库密码",
+    "default": "password"
+  },
+  "db_name": {
+    "type": "string",
+    "description": "数据库名",
+    "default": "lottery"
+  }
 }

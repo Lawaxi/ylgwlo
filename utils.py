@@ -2,7 +2,6 @@ from datetime import datetime, timedelta
 from typing import Dict, Any
 import math
 
-
 class WifeUtil:
     """老婆相关工具类"""
     
@@ -62,7 +61,6 @@ class WifeUtil:
         else:
             return f"距离下次更换还需 {int(remaining_minutes)}分钟"
 
-
 class GroupNameUtil:
     """团名称转换工具"""
     
@@ -79,7 +77,6 @@ class GroupNameUtil:
     def get_group_name(prefix: str) -> str:
         """获取完整团名"""
         return GroupNameUtil.GROUP_MAP.get(prefix, prefix)
-
 
 class Chance:
     """特殊抽奖次数管理"""
@@ -122,14 +119,12 @@ class Chance:
         if user_id in Chance._chances:
             del Chance._chances[user_id]
 
-
 class RankUtil:
     """排名相关工具"""
     
     @staticmethod
     def get_rank_line(user_id: int, count: int, max_count: int) -> str:
         """生成排名行显示"""
-        # 计算进度条
         bars = min(round(count * 10.0 / max_count), count)
         
         if bars == 0 and count > 0:

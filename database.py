@@ -10,7 +10,6 @@ DEFAULT_DATABASE_CONFIG = {
     'database': 'ylgwlo'
 }
 
-
 class Database:
     """数据库操作类"""
     
@@ -59,7 +58,6 @@ class Database:
             result = cursor.fetchall()
             return result
         except Exception as e:
-            # 停止吞掉异常，直接抛出，让 Astrbot 报错日志直接显示具体原因
             raise RuntimeError(f"【MySQL 查询异常】语句: {query} 错误信息: {e}")
         finally:
             cursor.close()
@@ -79,7 +77,6 @@ class Database:
                 conn.rollback()
             except:
                 pass
-            # 停止吞掉异常，抛出来看看究竟是表不存在还是外键报错
             raise RuntimeError(f"【MySQL 更新异常】语句: {query} 错误信息: {e}")
         finally:
             cursor.close()
@@ -87,7 +84,6 @@ class Database:
 
     def _init_tables(self):
         """初始化表结构 - 增加自动创建数据库逻辑"""
-        # 在建表前，先确保 ylgwlo 数据库本身存在
         try:
             temp_conn = pymysql.connect(
                 host=self.config['host'],
@@ -102,7 +98,6 @@ class Database:
         except Exception as db_e:
             print(f"【警告】尝试创建或检查数据库失败，可能权限不足: {db_e}")
 
-        # 用户表
         user_table = """
         CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -113,7 +108,6 @@ class Database:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         """
         
-        # 抽奖历史记录表
         record_table = """
         CREATE TABLE IF NOT EXISTS lottery_records (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -128,7 +122,6 @@ class Database:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         """
         
-        # 许愿持久化表
         wish_table = """
         CREATE TABLE IF NOT EXISTS wishes (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -140,7 +133,6 @@ class Database:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         """
 
-        # 这里如果报错会直接震荡出来，立刻就能在控制台看到具体原因
         self._execute_update(user_table)
         self._execute_update(record_table)
         self._execute_update(wish_table)
@@ -150,18 +142,14 @@ class Database:
         group_id_str = str(group_id)
         qq_str = str(qq)
         
-        # 1. 先尝试获取已有用户
         sql = "SELECT id FROM users WHERE group_id = %s AND qq = %s"
         res = self._execute_query(sql, (group_id_str, qq_str))
         if res:
             return int(res[0]['id'])
         
-        # 2. 统一风格：查不到则调用通用的 _execute_update 进行插入
         insert_sql = "INSERT INTO users (group_id, qq, coins) VALUES (%s, %s, 0)"
         self._execute_update(insert_sql, (group_id_str, qq_str))
         
-        # 3. 终极保险：由于 _execute_update 内部已经完成了 conn.commit()
-        # 这里直接二次查询拿回落盘的真实主键自增 ID，确保绝对不会产生 1452 外键错误
         res = self._execute_query(sql, (group_id_str, qq_str))
         if res:
             return int(res[0]['id'])

@@ -1,8 +1,8 @@
 name: astrbot_plugin_ylgwlo
 display_name: ylgwlo
 desc: "A random wife lottery plugin for QQ groups with affinity values, wish system, and rankings"
-version: v1.0.0 # 插件版本号。格式：v1.1.1 或者 v1.1
-author: LAWAXI # 作者
+version: v1.0.0
+author: LAWAXI
 repo: https://github.com/Lawaxi/ylgwlo/
 
 requirements:

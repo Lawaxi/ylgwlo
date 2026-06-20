@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import List, Dict, Any
 from datetime import datetime
 
-
 @dataclass
 class WifeRecord:
     """单个老婆记录"""
@@ -25,7 +24,6 @@ class WifeRecord:
             'timestamp': self.timestamp
         }
 
-
 @dataclass
 class Wife:
     """老婆信息"""
@@ -38,7 +36,6 @@ class Wife:
         if self.count != other.count:
             return self.count > other.count
         return self.sense > other.sense
-
 
 class UserWifeReport:
     """用户的老婆统计报告"""
@@ -95,7 +92,6 @@ class UserWifeReport:
     def get_wives_sort_by_sense(self) -> List[Wife]:
         return self.wives_sort_by_sense
 
-
 class UserMaxSenseReport:
     """用户的情愫王统计报告"""
     
@@ -124,7 +120,6 @@ class UserMaxSenseReport:
     
     def get_wives(self) -> List[Wife]:
         return self.wives
-
 
 class Wish:
     """许愿管理"""
