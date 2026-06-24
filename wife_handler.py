@@ -1,8 +1,8 @@
 import random
 import time
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional
+from typing import Dict, List
 import astrbot.api.message_components as Comp
+from astrbot.api import logger
 from .models import WifeRecord, UserWifeReport, UserMaxSenseReport, Wish
 from .utils import WifeUtil, GroupNameUtil, Chance, RankUtil
 
@@ -151,7 +151,23 @@ class WifeHandler:
                     f" | 情愫：{sense}% {WifeUtil.recommend(sense)}"
                 )
             ]
-            
+
+            image_url = self.API_IMAGE.format(wife_id)
+            try:
+                import requests
+                headers = {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                    "Referer": "https://www.snh48.com/"
+                }
+                resp = requests.get(image_url, headers=headers, timeout=5)
+                if resp.status_code == 200:
+                    msg_parts.append(Comp.Image.fromBytes(resp.content))
+                else:
+                    logger.info(f"【图片下载提示】状态码异常: {resp.status_code}，本次不插入图片")
+            except Exception as img_err:
+                logger.info(f"【图片下载失败】: {img_err}，已自动跳过图片展示")
+
+
             pocket_id = wife_obj.get("i", "0")
             if pocket_id != "0":
                 msg_parts.append(Comp.Plain(f"\n{self._get_msg('pocketIdMsg', '口袋ID: %s', pocket_id)}"))

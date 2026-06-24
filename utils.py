@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Dict, Any
-import math
+from typing import Dict
 
 class WifeUtil:
     """老婆相关工具类"""
